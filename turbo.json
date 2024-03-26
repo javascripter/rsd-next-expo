@@ -1,0 +1,56 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["**/.env"],
+  "pipeline": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".expo/**",
+        ".output/**",
+        ".vercel/output/**"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "format": {
+      "outputMode": "new-only"
+    },
+    "//#format": {
+      "outputMode": "new-only"
+    },
+    "lint": {
+      "dependsOn": ["^topo"]
+    },
+    "//#lint": {
+      "dependsOn": ["^topo"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo"]
+    },
+    "//#typecheck": {
+      "dependsOn": ["^topo"]
+    },
+    "test": {
+      "dependsOn": ["^topo"]
+    },
+    "//#test": {
+      "dependsOn": ["^topo"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    }
+  },
+  "globalEnv": [],
+  "experimentalUI": true
+}

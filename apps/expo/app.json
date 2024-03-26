@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "rsd-next-expo",
+    "slug": "rsd-next-expo",
+    "version": "0.0.0",
+    "scheme": "rsd-next-expo",
+    "platforms": ["web", "ios", "android"],
+    "web": {
+      "bundler": "metro"
+    },
+    "ios": {
+      "bundleIdentifier": "com.example.rsd-next-expo"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": true
+          },
+          "android": {
+            "newArchEnabled": true
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "android": {
+      "package": "com.example.rsd_next_expo"
+    }
+  }
+}

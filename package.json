@@ -1,0 +1,37 @@
+{
+  "name": "rsd-next-expo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.2.67",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-strict-dom": "^0.0.4",
+    "turbo": "^1.13.0",
+    "typescript": "~5.3.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.2",
+    "jest-environment-jsdom": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.3.1",
+    "prettier": "^3.2.5"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "jest": "jest",
+    "test": "bun run typecheck && bun run lint && jest",
+    "format": "prettier --write .",
+    "postinstall": "patch-package"
+  },
+  "resolutions": {
+    "schema-utils": "3.3.0"
+  },
+  "packageManager": "bun@1.0.33",
+  "dependencies": {
+    "patch-package": "^8.0.0"
+  }
+}
