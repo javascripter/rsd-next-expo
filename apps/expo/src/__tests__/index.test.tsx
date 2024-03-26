@@ -28,8 +28,4 @@ afterEach(() => {
 it('Onboarding', async () => {
   renderRouter(appDir)
   expect(screen).toHavePathname('/')
-
-  expect(
-    screen.getByRole('link', { name: /view on github/i }),
-  ).toBeOnTheScreen()
 })

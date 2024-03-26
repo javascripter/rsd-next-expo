@@ -1,61 +1,13 @@
 'use client'
+import NextLink from 'next/link'
 
 import { html } from 'react-strict-dom'
 import React from 'react'
 import { LinkProps } from './types'
 import { StrictElement } from 'react-strict-dom/dist/types/StrictElement'
-import { StrictClickEvent } from 'react-strict-dom/dist/types/StrictReactDOMProps'
-import { useRouter } from '../../lib/router'
-import { Link as ExpoRouterLink } from 'expo-router'
 
 export const Link = React.forwardRef<StrictElement, LinkProps>(
-  ({ href, replace, onClick, ...rest }, hostRef) => {
-    const router = useRouter()
-
-    const handleClick = React.useCallback(
-      (event: StrictClickEvent) => {
-        onClick?.(event)
-        if (
-          (event as React.MouseEvent<HTMLAnchorElement, MouseEvent>)
-            .defaultPrevented
-        ) {
-          return
-        }
-
-        if (
-          event.metaKey ||
-          event.altKey ||
-          event.ctrlKey ||
-          event.shiftKey ||
-          event.button !== 0 ||
-          ![undefined, null, '', 'self'].includes(
-            (event as React.MouseEvent<HTMLAnchorElement, MouseEvent>)
-              .currentTarget?.target,
-          )
-        ) {
-          return
-        }
-
-        const mouseEvent = event as React.MouseEvent<
-          HTMLAnchorElement,
-          MouseEvent
-        >
-
-        mouseEvent.preventDefault?.()
-
-        if (href === undefined || href === '#') {
-          return
-        }
-
-        if (replace) {
-          router.replace(ExpoRouterLink.resolveHref(href))
-        } else {
-          router.push(ExpoRouterLink.resolveHref(href))
-        }
-      },
-      [href, onClick, replace, router],
-    )
-
+  ({ href, replace, ...rest }, hostRef) => {
     function setRef(node: StrictElement | null) {
       if (hostRef) {
         if (typeof hostRef === 'function') {
@@ -67,12 +19,16 @@ export const Link = React.forwardRef<StrictElement, LinkProps>(
     }
 
     return (
-      <html.a
-        ref={setRef}
-        {...rest}
-        {...(href !== undefined && { href })}
-        onClick={handleClick}
-      />
+      <NextLink
+        href={href ?? {}}
+        {...(replace !== undefined && {
+          replace,
+        })}
+        passHref
+        legacyBehavior
+      >
+        <html.a ref={setRef} {...rest} />
+      </NextLink>
     )
   },
 )

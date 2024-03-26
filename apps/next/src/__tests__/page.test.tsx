@@ -12,7 +12,7 @@ describe('Onboarding', () => {
 <h1
   class="runtime__styles.block runtime__styles.heading screen__styles.h1"
 >
-  RSD Demo for Expo & Next.js
+  RSD with Expo + Next.js 🚧
 </h1>
 `)
   })

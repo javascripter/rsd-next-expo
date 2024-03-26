@@ -28,7 +28,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@rsd-next-expo/app', 'react-strict-dom'],
   experimental: {
-    typedRoutes: true,
+    typedRoutes: false,
   },
   webpack(config, _options) {
     config.resolve ??= {}
