@@ -73,6 +73,11 @@ Using a single root-level configuration with scripts in the root directory offer
 
 ## 📝 Notes
 
+### Next.js production build issues
+
+There is [a bug](https://github.com/facebook/stylex/issues/309) in StyleX Next.js Plugin preventing production builds.
+A fix is being worked on in [this PR](https://github.com/facebook/stylex/pull/491). Until this issue is resolved upstream, production builds will fail to build.
+
 ### Resolutions
 
 The package.json file includes the following resolution:
