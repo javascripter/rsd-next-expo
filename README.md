@@ -33,8 +33,7 @@ To start the applications, follow these steps:
 
 1. Install dependencies by running bun install
 2. For Next.js local development:
-
-- Run `turbo dev --filter=next` to start the Next.js development server
+  - Run `turbo dev --filter=next` to start the Next.js development server
 
 3. For Expo local development:
   - First, build a development client on your device or simulator:
