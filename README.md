@@ -37,12 +37,11 @@ To start the applications, follow these steps:
 - Run `turbo dev --filter=next` to start the Next.js development server
 
 3. For Expo local development:
-
-- First, build a development client on your device or simulator:
-  - Navigate to `apps/expo` directory
-  - Run either expo run:ios or eas build
-- After building the development client, from the root of the monorepo:
-  - Run `expo start --dev-client` to start the Expo development server
+  - First, build a development client on your device or simulator:
+    - Navigate to `apps/expo` directory
+    - Run either expo run:ios or eas build
+  - After building the development client, from the root of the monorepo:
+    - Run `expo start --dev-client` to start the Expo development server
 
 ## 📜 Scripts
 
