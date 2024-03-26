@@ -1,10 +1,12 @@
 # RSD with Expo + Next.js 🚧
 
-## 🔦 About
+## 🔦 Overview
 
-A monorepo for React Strict DOM with Expo + Next.js App Dir (RSC), with no dependencies of react-native-web for Next.js.
+This monorepo showcases React Strict DOM (RSD) with Expo and Next.js App Directory (RSC). It provides a powerful combination of technologies without relying on react-native-web for Next.js integration.
 
-## Included packages
+## 📦 Included Packages
+
+The monorepo includes the following key packages:
 
 - React Strict DOM
 - Expo SDK 50
@@ -14,68 +16,66 @@ A monorepo for React Strict DOM with Expo + Next.js App Dir (RSC), with no depen
 
 ## 🗂 Directory Structure
 
-- `apps` entry points for each app
+The monorepo follows this directory structure:
 
-  - `expo`
-  - `next`
+- `apps`: Contains entry points for each application
 
-- `packages` shared packages across apps
-  - `app` you'll be importing most files from `app/`
-    - `features` (don't use a `screens` folder. organize by feature.)
+  - `expo`: Expo application
+  - `next`: Next.js application
 
-## 🏁 Start the app
+- `packages`: Contains shared packages used across applications
+  - `app`: The main package from which most files are imported
+    - `features`: Organizes code by feature
 
-- Install dependencies: `bun install`
+## 🚀 Getting Started
 
-- Next.js local dev: `turbo dev --filter=next`
-  - Runs `next dev`
-- Expo local dev:
-  - First, build a dev client onto your device or simulator
-    - `cd apps/expo`
-    - Then, either `expo run:ios`, or `eas build`
-  - After building the dev client, from the root of the monorepo...
-    - Runs `expo start --dev-client`
+To start the applications, follow these steps:
 
-## Scripts
+1. Install dependencies by running bun install
+2. For Next.js local development:
 
-We use one root config for common tasks like `typecheck`, `lint`, and `format`.
-Install [`turbo`](https://turbo.build/repo) command globally and run `turbo [command]`.
+- Run `turbo dev --filter=next` to start the Next.js development server
 
-```sh
-turbo test # Runs all tests including typecheck, lint and format
-```
+3. For Expo local development:
 
-```sh
-turbo typecheck
-```
+- First, build a development client on your device or simulator:
+  - Navigate to `apps/expo` directory
+  - Run either expo run:ios or eas build
+- After building the development client, from the root of the monorepo:
+  - Run `expo start --dev-client` to start the Expo development server
 
-```sh
-turbo lint
-```
+## 📜 Scripts
 
-```sh
-turbo format
-```
+The monorepo utilizes a single root-level configuration for common tasks such as type checking, linting, and formatting. Install the [`turbo`](https://turbo.build/repo) command globally and run `turbo [command]` to execute the desired script.
 
-### Why root-level config/scripts?
+### Available Scripts
 
-This monorepo uses a single root-level configuration with scripts in the root directory. This approach offers several benefits:
+- `turbo test`: Runs all tests, including type checking, linting, and formatting
+- `turbo typecheck`: Performs type checking
+- `turbo lint`: Runs the linter
+- `turbo format`: Formats the codebase
+
+### Benefits of Root-Level Configuration
+
+Using a single root-level configuration with scripts in the root directory offers several advantages:
 
 #### Performance Benefits
 
-- Running a single process is significantly faster than running multiple processes in parallel.
-  - While Turborepo can alleviate this issue through caching, the cache is often invalidated when making changes to shared packages.
-- In a per-package setup, dependent shared packages need to be type-checked multiple times, which is redundant.
-- In real-world scenarios, running commands in the entire repository is not a performance bottleneck.
+- Running a single process is significantly faster compared to running multiple processes in parallel.
+  - Although Turborepo can mitigate this issue through caching, the cache is often invalidated when making changes to shared packages.
+- In a per-package setup, dependent shared packages need to be type-checked multiple times, leading to redundancy.
+- In real-world scenarios, running commands in the entire repository does not introduce performance bottlenecks.
 
 #### Reduced Setup Complexity
 
-- Opening the project in VSCode from the root directory works seamlessly, without the need for VSCode Workspaces.
-- Having a single root-level configuration eliminates the need to install and configure tools like ESLint for each package.
+- Opening the project in VSCode from the root directory works seamlessly without the need for VSCode Workspaces.
+- Having a single root-level configuration eliminates the need to install and configure tools like ESLint for each package individually.
 
-## Notes
+## 📝 Notes
 
 ### Resolutions
+
+The package.json file includes the following resolution:
 
 ```json package.json
   "resolutions": {
@@ -83,4 +83,4 @@ This monorepo uses a single root-level configuration with scripts in the root di
   }
 ```
 
-This line is required because expo-router depends on schema-utils which depends on ajv^8, and eslint requires ajv^6, causing dependency mismatches. You cannot directly add resolutions to ajv because of breaking changes between the versions, schema-utils version has been downgraded instead.
+This resolution is required because `expo-router` depends on `schema-utils`, which in turn depends on `ajv^8`. However, eslint requires `ajv^6`, causing dependency mismatches. To resolve this issue, the version of schema-utils has been downgraded instead of directly adding resolutions to ajv due to breaking changes between the versions.
